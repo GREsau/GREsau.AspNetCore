@@ -7,7 +7,7 @@ namespace GREsau.AspNetCore.Test.TestApp
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().WithJsonPropertyModelMetadataNames();
+            services.AddControllers().AddJsonPropertyModelMetadataNames();
         }
 
         public void Configure(IApplicationBuilder app)

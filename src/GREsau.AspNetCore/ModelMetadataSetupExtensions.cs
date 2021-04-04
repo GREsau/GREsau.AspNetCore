@@ -1,6 +1,5 @@
 ﻿using GREsau.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
@@ -12,20 +11,23 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class ModelMetadataSetupExtensions
     {
         /// <summary>
-        /// Configures a <see cref="IMetadataDetailsProvider" /> that sets <see cref="BindingMetadata.BinderModelName" />
-        /// and <see cref="DisplayMetadata.DisplayName" /> of all properties to their corresponding JSON name.
+        /// Configures an <c>IMetadataDetailsProvider</c> that sets the <c>BindingMetadata.BinderModelName</c>
+        /// and <c>DisplayMetadata.DisplayName</c> of all properties to their corresponding JSON names.
+        /// <para>A property's JSON name is determined from a <c>[JsonPropertyName]</c> attribute if present,
+        /// otherwise falling back to the property naming policy configured on the MVC JSON options.</para>
         /// </summary>
-        public static IMvcBuilder WithJsonPropertyModelMetadataNames(this IMvcBuilder builder)
+        /// <remarks>
+        /// This will alter the result of failed model validation to use the JSON property names rather than
+        /// C# property names.
+        /// </remarks>
+        public static IMvcBuilder AddJsonPropertyModelMetadataNames(this IMvcBuilder builder)
         {
             AddMetadataProviderSetup(builder.Services);
             return builder;
         }
 
-        /// <summary>
-        /// Configures a <see cref="IMetadataDetailsProvider" /> that sets <see cref="BindingMetadata.BinderModelName" />
-        /// and <see cref="DisplayMetadata.DisplayName" /> of all properties to their corresponding JSON name.
-        /// </summary>
-        public static IMvcCoreBuilder WithJsonPropertyModelMetadataNames(this IMvcCoreBuilder builder)
+        ///<inheritdoc cref="AddJsonPropertyModelMetadataNames(IMvcBuilder)"/>
+        public static IMvcCoreBuilder AddJsonPropertyModelMetadataNames(this IMvcCoreBuilder builder)
         {
             AddMetadataProviderSetup(builder.Services);
             return builder;

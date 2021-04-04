@@ -11,7 +11,7 @@ Install via NuGet:
 
 Basic usage:
 ```csharp
-services.AddControllers().WithJsonPropertyModelMetadataNames();
+services.AddControllers().AddJsonPropertyModelMetadataNames();
 ```
 
 By default, when model validation fails, MVC will use the C# property names in the resulting [`ValidationProblemDetails`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.validationproblemdetails?view=aspnetcore-5.0). This will typically returned to the client as a JSON body of a 400 Bad Request response.
@@ -47,12 +47,12 @@ If the client POSTs the JSON `{ "foo": 0 }` to a controller that takes `MyModel`
 }
 ```
 
-...even though the client would have no prior knowledge of the identifier `Number`. To make MVC use the identifier `foo` instead, you can use this library's `WithJsonPropertyModelMetadataNames()` extension method on `IMvcBuilder` (or `IMvcCoreBuilder`), e.g. in your Startup class:
+...even though the client would have no prior knowledge of the identifier `Number`. To make MVC use the identifier `foo` instead, you can use this library's `AddJsonPropertyModelMetadataNames()` extension method on `IMvcBuilder` (or `IMvcCoreBuilder`), e.g. in your Startup class:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddControllers().WithJsonPropertyModelMetadataNames();
+    services.AddControllers().AddJsonPropertyModelMetadataNames();
 }
 ```
 
