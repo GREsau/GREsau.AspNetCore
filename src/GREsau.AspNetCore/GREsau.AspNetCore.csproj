@@ -6,6 +6,8 @@
     <Title>GREsau.AspNetCore</Title>
     <Description>Utilities for ASP.NET Core</Description>
     <Authors>GREsau</Authors>
+    <RepositoryUrl>https://github.com/GREsau/GREsau.AspNetCore</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/GREsau/GREsau.AspNetCore</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

@@ -2,7 +2,7 @@
 Utilities for ASP.NET Core web applications.
 
 ## Installing
-Install via NuGet:
+Install via [NuGet](https://www.nuget.org/packages/GREsau.AspNetCore/):
 ```sh
 > dotnet add package GREsau.AspNetCore
 ```
